@@ -7,9 +7,9 @@ import { schema, uiSchema, formData } from './formSchema';
 const log = type => console.log.bind(console, type);
 const onError = e => console.error(e);
 
-const onSubmit = formFields => {
+const onSubmit = ({ formData }) => {
   axios
-    .post('/item/create', formFields)
+    .post('/item/create', formData)
     .then(response => {
       console.log(response);
     })
@@ -19,8 +19,6 @@ const onSubmit = formFields => {
 };
 
 const ProviderForm = props => {
-  useEffect(() => {});
-
   return (
     <Form
       schema={schema}
