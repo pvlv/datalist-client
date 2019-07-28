@@ -52,7 +52,7 @@ export const schema = {
       type: 'string',
       title: 'Партия'
     },
-    stringFormats: {
+    params: {
       type: 'object',
       title: 'Параметры для шин',
       properties: {
