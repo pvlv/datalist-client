@@ -7,3 +7,4 @@ export * from './Spinner';
 export * from './Center';
 export * from './Modal';
 export * from './Cytoscape';
+export * from './DataTree';

@@ -1,20 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Fade, Button } from 'react-bootstrap';
 
-import { Cytoscape } from '../../components';
+import { DataTree } from '../../components';
+import { useService } from '../../hooks';
 import data from './data.json';
 
-function simulateNetworkRequest() {
-  return new Promise(resolve => setTimeout(resolve, 2000));
+function getItemByCodeMock() {
+  return new Promise(resolve => setTimeout(resolve, 1000));
 }
 
+const delay = (ms = 2000) => new Promise(res => setTimeout(res, ms));
+
 export function GraphTab() {
+  const { api } = useService();
   const [isShowTab, setTabShow] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [items, setItems] = useState([]);
+
+  // api.getItemByCode = getItemByCodeMock;
+
+  const getItemByCode = async code => {
+    try {
+      const res = await api.getItemByCode(code);
+      await delay(1000);
+      setItems(res);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     if (isLoading) {
-      simulateNetworkRequest().then(() => {
+      getItemByCode().then(() => {
         setLoading(false);
         setTabShow(!isShowTab);
       });
@@ -43,8 +60,7 @@ export function GraphTab() {
       </Button>
       <Fade in={isShowTab}>
         <div id="example-fade-text">
-          <Button>На весь экран</Button>
-          <Cytoscape data={data} roots="#a" />
+          <DataTree data={items} />
         </div>
       </Fade>
     </>

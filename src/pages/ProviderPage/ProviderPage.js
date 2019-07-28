@@ -27,7 +27,7 @@ export function ProviderPage() {
   }, []);
 
   // fixme
-  // api.addProviderData = addProviderDataMock;
+  api.addProviderData = addProviderDataMock;
 
   const addProviderData = async formData => {
     try {
