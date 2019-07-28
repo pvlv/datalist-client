@@ -20,9 +20,25 @@ export function ClientPage() {
         <Col sm={8}>
           <Tab.Content>
             <Tab.Pane eventKey="#link1">
-              <GraphTab />
+              <iframe
+                style={{ border: 'none' }}
+                src="http://detalist.izzz.io/front/check.html"
+                width="800px"
+                height="1000px"
+              >
+                <GraphTab />
+              </iframe>
             </Tab.Pane>
-            <Tab.Pane eventKey="#link2" />
+            <Tab.Pane eventKey="#link2">
+              <iframe
+                style={{ border: 'none' }}
+                width="800px"
+                height="1000px"
+                src="http://detalist.izzz.io/front/search.html"
+              >
+                iframe
+              </iframe>
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>
