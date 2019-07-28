@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Fade, Button } from 'react-bootstrap';
+import React, { useState, useEffect, useRef } from 'react';
+import { Fade, Button, Form } from 'react-bootstrap';
 
 import { DataTree } from '../../components';
 import { useService } from '../../hooks';
-import data from './data.json';
+import defaultData from './data.json';
 
-function getItemByCodeMock() {
-  return new Promise(resolve => setTimeout(resolve, 1000));
+function getItemByCodeMock(code) {
+  return new Promise(resolve => setTimeout(resolve(defaultData), 1000));
 }
 
 const delay = (ms = 2000) => new Promise(res => setTimeout(res, ms));
 
 export function GraphTab() {
+  const inputCodeRef = useRef(null);
   const { api } = useService();
   const [isShowTab, setTabShow] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(defaultData);
 
   // api.getItemByCode = getItemByCodeMock;
 
@@ -31,14 +32,17 @@ export function GraphTab() {
 
   useEffect(() => {
     if (isLoading) {
-      getItemByCode().then(() => {
+      getItemByCode(inputCodeRef.current.value).then(() => {
         setLoading(false);
         setTabShow(!isShowTab);
       });
     }
   }, [isLoading]);
 
-  const handleModalClick = () => setLoading(true);
+  const handleSubmit = e => {
+    e.preventDefault();
+    setLoading(true);
+  };
 
   return (
     <>
@@ -49,15 +53,25 @@ export function GraphTab() {
         классической латыни 45 года н.э., то есть более двух тысячелетий назад.
         Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney,
       </p>
-      <Button
-        variant="info"
-        onClick={handleModalClick}
-        aria-expanded={isShowTab}
-        aria-controls="example-fade-text"
-        style={{ marginBottom: '1rem' }}
-      >
-        {isLoading ? 'Loading…' : 'Загрузить'}
-      </Button>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formGroupCode">
+          <Form.Control
+            ref={inputCodeRef}
+            type="number"
+            placeholder="введите код товара"
+          />
+          <br />
+          <Button
+            variant="info"
+            type="submit"
+            aria-expanded={isShowTab}
+            aria-controls="example-fade-text"
+            style={{ marginBottom: '1rem' }}
+          >
+            {isLoading ? 'Загрузка…' : 'Загрузить'}
+          </Button>
+        </Form.Group>
+      </Form>
       <Fade in={isShowTab}>
         <div id="example-fade-text">
           <DataTree data={items} />
