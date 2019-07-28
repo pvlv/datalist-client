@@ -51,6 +51,48 @@ export const schema = {
     bench: {
       type: 'string',
       title: 'Партия'
+    },
+    stringFormats: {
+      type: 'object',
+      title: 'Параметры для шин',
+      properties: {
+        material: {
+          type: 'string',
+          title: 'Материалы шин',
+          anyOf: [
+            {
+              type: 'string',
+              title: 'Резина',
+              enum: ['0']
+            },
+            {
+              type: 'string',
+              title: 'Каучук',
+              enum: ['1']
+            }
+          ]
+        },
+        diameter: {
+          type: 'string',
+          title: 'Диаметр шин',
+          anyOf: [
+            {
+              type: 'string',
+              title: '18',
+              enum: ['0']
+            },
+            {
+              type: 'string',
+              title: '22',
+              enum: ['1']
+            }
+          ]
+        },
+        width: {
+          type: 'number',
+          title: 'Ширина шин'
+        }
+      }
     }
   }
 };

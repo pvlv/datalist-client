@@ -18,7 +18,9 @@ const ProviderForm = ({ onSubmit }) => {
     >
       <ButtonToolbar className="justify-content-between">
         <Button variant="secondary">Отменить</Button>{' '}
-        <Button type="submit">Отправить</Button>
+        <Button variant="info" type="submit">
+          Отправить
+        </Button>
       </ButtonToolbar>
     </Form>
   );

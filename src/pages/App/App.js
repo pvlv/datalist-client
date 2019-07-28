@@ -7,6 +7,7 @@ import NotFound from '../NotFound';
 import { StatusPage } from '../StatusPage';
 import Main from '../Main';
 import { ProviderPage } from '../ProviderPage';
+import { ClientPage } from '../ClientPage';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
               </ServiceContext.Provider>
             )}
           />
-          <Route path="/client" component={NotFound} />
+          <Route path="/client" component={ClientPage} />
           <Route path="/success" render={() => <StatusPage success />} />
           <Route path="/error" render={() => <StatusPage error />} />
           <Route render={() => <StatusPage notFound />} />
