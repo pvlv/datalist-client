@@ -24,7 +24,7 @@ export function GraphTab() {
     try {
       const res = await api.getItemByCode(code);
       await delay(1000);
-      setItems(res);
+      setItems(res.data.data);
     } catch (e) {
       console.error(e);
     }
@@ -46,7 +46,7 @@ export function GraphTab() {
 
   return (
     <>
-      <h1>Title</h1>
+      <h1>Введите/отсканируйте код товара</h1>
       <p>
         огие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор
         слов, но это не совсем так. Его корни уходят в один фрагмент
