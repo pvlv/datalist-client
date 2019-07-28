@@ -58,8 +58,8 @@ export function ProviderPage() {
   return (
     <iframe
       src="http://detalist.izzz.io/front/add.html"
-      height="1000px"
-      width="1000px"
+      height="1200px"
+      width="100%"
     >
       iframe
     </iframe>
