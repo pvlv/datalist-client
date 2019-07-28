@@ -1,24 +1,12 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import Form from 'react-jsonschema-form-bs4';
-import { Button } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 import { schema, uiSchema, formData } from './formSchema';
 
 const log = type => console.log.bind(console, type);
 const onError = e => console.error(e);
 
-const onSubmit = ({ formData }) => {
-  axios
-    .post('/item/create', formData)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
-
-const ProviderForm = props => {
+const ProviderForm = ({ onSubmit }) => {
   return (
     <Form
       schema={schema}
@@ -28,10 +16,10 @@ const ProviderForm = props => {
       onSubmit={onSubmit}
       onError={onError}
     >
-      <div>
-        <Button>Отменить</Button>
+      <ButtonToolbar className="justify-content-between">
+        <Button variant="secondary">Отменить</Button>{' '}
         <Button type="submit">Отправить</Button>
-      </div>
+      </ButtonToolbar>
     </Form>
   );
 };

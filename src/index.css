@@ -17,3 +17,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+i.glyphicon {
+  display: none;
+}
+.btn-add::after {
+  content: ' Добавить';
+}
+.array-item-move-up::after {
+  content: 'Move Up';
+}
+.array-item-move-down::after {
+  content: 'Move Down';
+}
+.array-item-remove::after {
+  content: ' Удалить';
+}

@@ -1,38 +1,5 @@
-export const schema2 = {
-  title: 'Form Title',
-  type: 'object',
-  // required: ['title'],
-  properties: {
-    title: {
-      type: 'string',
-      title: 'Title',
-      default: 'A new task',
-      minLength: 1
-    },
-    description: {
-      type: 'string',
-      title: 'Description of task'
-    },
-    priority: {
-      type: 'string',
-      title: 'Priority',
-      enum: ['Low', 'Medium', 'High']
-    },
-    tags: {
-      type: 'array',
-      title: 'Related Projects',
-      items: {
-        type: 'string',
-        enum: ['ProjA', 'ProjB']
-      },
-      uniqueItems: true
-    },
-    done: { type: 'boolean', title: 'Done?', default: false }
-  }
-};
-
 export const schema = {
-  title: 'Default Title',
+  title: 'Добавление нового товара',
   type: 'object',
   properties: {
     code: {
@@ -89,14 +56,7 @@ export const schema = {
 };
 
 export const uiSchema = {
-  'ui:rootFieldId': 'formOne',
-  description: {
-    'ui:widget': 'textarea',
-    classNames: 'task__description some-class'
-  },
-  tags: {
-    'ui:widget': 'checkboxes'
-  }
+  'ui:rootFieldId': 'form'
 };
 
 export const formData = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink as RLink } from 'react-router-dom';
 import { Navbar as BSNavbar, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -10,11 +10,27 @@ const StyledBSNavbar = styled(BSNavbar)`
   background-position-y: 50%;
 `;
 
+const Link = styled(RLink)`
+  color: white;
+  font-size: 50px;
+  margin-right: 15px;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+`;
+
 export function Navbar() {
+  const activeStyle = {
+    padding: '15px',
+    outline: '4px solid orange'
+  };
+
   return (
     <StyledBSNavbar bg="dark" variant="dark">
       <Container>
-        <StyledBSNavbar.Brand href="/" style={{ 'font-size': '60px' }}>
+        <StyledBSNavbar.Brand href="/" style={{ fontSize: '60px' }}>
           <img
             alt=""
             src="/logo.svg"
@@ -22,8 +38,17 @@ export function Navbar() {
             height="30"
             className="d-inline-block align-top"
           />
-          {'Деталист'}
+          <b>{'Деталист | '}</b>
         </StyledBSNavbar.Brand>
+        <div>
+          <Link to="/provider" activeStyle={activeStyle}>
+            Поставщик
+          </Link>
+          /{' '}
+          <Link to="/client" activeStyle={activeStyle}>
+            Клиент
+          </Link>
+        </div>
       </Container>
     </StyledBSNavbar>
   );
