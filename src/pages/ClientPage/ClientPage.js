@@ -9,11 +9,11 @@ export function ClientPage() {
       <Row>
         <Col sm={4}>
           <ListGroup>
-            <ListGroup.Item action href="#link1" variant="info">
-              Link 1
+            <ListGroup.Item action href="#link1" variant="secondary">
+              Информация о изделиях
             </ListGroup.Item>
-            <ListGroup.Item action href="#link2" variant="info">
-              Link 2
+            <ListGroup.Item action href="#link2" variant="secondary">
+              Поиск по изделиям
             </ListGroup.Item>
           </ListGroup>
         </Col>

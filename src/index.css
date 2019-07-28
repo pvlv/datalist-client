@@ -34,3 +34,16 @@ i.glyphicon {
 .array-item-remove::after {
   content: ' Удалить';
 }
+.btn-info {
+  background-color: #6610f2;
+  border-color: #6610f2;
+}
+
+.btn-info:hover,
+.btn-info:active {
+  background-color: #6610f2 !important;
+}
+
+iframe {
+  border: none;
+}
